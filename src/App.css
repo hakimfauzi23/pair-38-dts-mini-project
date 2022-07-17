@@ -42,3 +42,61 @@ body {
 .movie-information-carousel {
   font-family: "Inter", sans-serif;
 }
+
+.detail-movie-poster img {
+  width: 100%;
+  max-height: 525px;
+  object-fit: cover;
+}
+
+.detail-movie-poster-contain {
+  font-family: "Inter", sans-serif;
+  font-size: 600;
+  position: absolute;
+  left: 0;
+  margin: 10%;
+}
+
+.detail-movie-poster-contain {
+  color: white;
+  width: 30%;
+  height: auto;
+}
+
+.detail-movie-poster-contain h1 {
+  padding: 0px;
+  margin: 0px;
+}
+.detail-movie-poster-contain p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.detail-movie-poster-contain .button-group {
+  margin-top: 20px;
+}
+
+.play-button {
+  width: 30%;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 4px;
+  border: 0;
+  background-color: rgb(223, 223, 223);
+  margin-right:20px ;
+}
+
+.info-button {
+  color: rgb(255, 255, 255);
+  width: 45%;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 4px;
+  border: 0;
+  background-color: rgba(124, 124, 124, 0.736);
+}
+
+.detail-movie-description{
+  margin: 5%;
+  color: white;
+}
