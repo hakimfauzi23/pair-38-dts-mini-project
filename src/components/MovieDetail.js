@@ -1,6 +1,6 @@
 import React from "react";
 
-export const MovieDetail = ({ data }) => {
+const MovieDetail = ({ data }) => {
   return (
     <div>
       <div className="detail-movie-poster">
@@ -45,3 +45,5 @@ export const MovieDetail = ({ data }) => {
     </div>
   );
 };
+
+export default MovieDetail;
