@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 export const MovieSlider = ({ data, title, original }) => {
@@ -48,7 +49,7 @@ export const MovieSlider = ({ data, title, original }) => {
         {movies.map((e, i) => {
           return (
             <div key={i}>
-              <a href="/www.google.com">
+              <Link to={`/movie/${e.id}`}>
                 <img
                   className={original ? "original" : "list"}
                   src={`${BASE_IMAGE_URL}${
@@ -56,7 +57,7 @@ export const MovieSlider = ({ data, title, original }) => {
                   }`}
                   alt="Credit to Cristina Gottardi on Unsplash"
                 />
-              </a>
+              </Link>
             </div>
           );
         })}

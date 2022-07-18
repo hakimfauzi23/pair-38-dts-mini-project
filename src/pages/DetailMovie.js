@@ -3,12 +3,15 @@ import { landscape, portrait } from "../components/dummyData";
 import MovieSlider from "../components/MovieSlider";
 import MovieDetail from "../components/MovieDetail";
 import tmdb from "../apis/tmdb";
+import { useParams } from "react-router-dom";
 
 export const DetailMovie = () => {
+  let params = useParams();
+
   const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState([]);
 
-  const idMovie = 756999;
+  const idMovie = params?.id;
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -19,10 +22,8 @@ export const DetailMovie = () => {
       }
     };
 
-  console.log(movie);
-
     fetchMovie();
-  }, []);
+  }, [idMovie]);
 
   useEffect(() => {
     const fetchMovies = async () => {

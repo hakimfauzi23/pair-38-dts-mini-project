@@ -1,12 +1,15 @@
 import "./App.css";
-import { MovieDetail } from "./components/MovieDetail";
 import { DetailMovie } from "./pages/DetailMovie";
 import { Homepage } from "./pages/Homepage";
+import { Route, Routes } from "react-router-dom";
+
 function App() {
   return (
     <>
-      {/* <Homepage /> */}
-      <DetailMovie />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/movie/:id" element={<DetailMovie />} />
+      </Routes>
     </>
   );
 }
