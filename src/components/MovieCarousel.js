@@ -43,7 +43,6 @@ const PrevArrow = (props) => {
 class CustomSlide extends Component {
   render() {
     const { index, ...props } = this.props;
-    console.log(props.url);
     return (
       <div
         key={index}
@@ -53,11 +52,7 @@ class CustomSlide extends Component {
           className="movie-information-carousel"
           style={{
             width: "50%",
-            display: "flex",
-            flexDirection: "column",
-            alignContent: "center",
-            padding: "12px 25px 12px 12px",
-            justifyContent: "center",
+            padding: "60px 25px 12px 40px",
           }}
         >
           <div
@@ -79,7 +74,7 @@ class CustomSlide extends Component {
             and scrambled it to make a type specimen book.
           </div>
         </div>
-        <div style={{ width: "50%" }}>
+        <div className="movie-image-carousel">
           <img src={props.url} alt="movie-poster" className="masked" />
         </div>
       </div>
@@ -96,6 +91,40 @@ export const MovieCarousel = ({ data }) => {
     speed: 500,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          centerMode: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const movies = data;

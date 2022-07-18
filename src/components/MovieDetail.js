@@ -11,21 +11,23 @@ const MovieDetail = ({ data }) => {
           </p>
           <div className="button-group">
             <button className="play-button">
-              <img src="/play-button.png" alt="" style={{ width: "15px" }} />
-              Play
+              <img src="/play-button.png" className="play-icon" alt="" />
+              <span className="play-button-text" style={{ paddingLeft: "15px" }}>Play</span>
             </button>
             <button className="info-button">
               <img
                 src="/more-information.png"
                 alt=""
+                className="info-icon"
                 style={{ width: "15px" }}
               />
-              More Information
+              <span className="info-button-text" style={{ paddingLeft: "15px" }}>More Information</span>
             </button>
           </div>
         </div>
 
         <img
+          className="detail-movie-poster-image"
           src="https://ultimagz.com/wp-content/uploads/dune-movie-poster-1630680152236.jpg"
           alt=""
         />
