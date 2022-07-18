@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Slider from "react-slick";
+import tmdb from "../apis/tmdb";
 
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
@@ -43,6 +44,22 @@ const PrevArrow = (props) => {
 class CustomSlide extends Component {
   render() {
     const { index, ...props } = this.props;
+    const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/original";
+    const movie = props.data;
+    const genres = [];
+
+    function getGenres(genres, id) {
+      const filtered = genres.filter((e) => {
+        return e.id == id;
+      });
+
+      return filtered[0].name;
+    }
+
+    movie.genre_ids.forEach((e) => {
+      genres.push(getGenres(props.genres, e));
+    });
+
     return (
       <div
         key={index}
@@ -58,24 +75,25 @@ class CustomSlide extends Component {
           <div
             style={{ fontWeight: 600, fontSize: "32px", marginBottom: "15px" }}
           >
-            Movie Title
+            {movie.title}
           </div>
           <div
             style={{ fontWeight: 300, fontSize: "12px", marginBottom: "15px" }}
           >
-            This is Genre
+            {genres.join(" | ")}
           </div>
           <div
             style={{ fontWeight: 400, fontSize: "15px", marginBottom: "5px" }}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            {movie.overview}
           </div>
         </div>
         <div className="movie-image-carousel">
-          <img src={props.url} alt="movie-poster" className="masked" />
+          <img
+            src={`${BASE_IMAGE_URL}${movie.backdrop_path}`}
+            alt="movie-poster"
+            className="masked"
+          />
         </div>
       </div>
     );
@@ -83,6 +101,7 @@ class CustomSlide extends Component {
 }
 
 export const MovieCarousel = ({ data }) => {
+  const [genres, setGenres] = useState([]);
   const settings = {
     className: "center",
     centerMode: true,
@@ -127,13 +146,26 @@ export const MovieCarousel = ({ data }) => {
     ],
   };
 
+  useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const fetchedGenres = await tmdb.get("genre/movie/list");
+        setGenres(fetchedGenres.data.genres);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchGenres();
+  }, []);
+
   const movies = data;
 
   return (
     <div style={{ marginTop: "3%", marginBottom: "1%" }}>
       <Slider {...settings}>
         {movies.map((e, i) => {
-          return <CustomSlide index={i} url={e.url} />;
+          return <CustomSlide key={i} index={i} data={e} genres={genres} />;
         })}
       </Slider>
     </div>

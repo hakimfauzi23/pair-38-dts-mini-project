@@ -39,10 +39,10 @@ export const MovieSlider = ({ data, title, original }) => {
     ],
   };
 
+  const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/original";
   const movies = data;
-
   return (
-    <div className="container">
+    <div className="container movie-slider">
       <p className="list-title">{title ? title : "Unamed List"}</p>
       <Slider {...settings}>
         {movies.map((e, i) => {
@@ -51,7 +51,9 @@ export const MovieSlider = ({ data, title, original }) => {
               <a href="/www.google.com">
                 <img
                   className={original ? "original" : "list"}
-                  src={e.url}
+                  src={`${BASE_IMAGE_URL}${
+                    original ? e.poster_path : e.backdrop_path
+                  }`}
                   alt="Credit to Cristina Gottardi on Unsplash"
                 />
               </a>
