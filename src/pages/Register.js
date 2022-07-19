@@ -5,13 +5,14 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../apis/firebase";
 
 function Copyright(props) {
   return (
@@ -22,10 +23,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Movies Apps!
-      </Link>{" "}
-      {new Date().getFullYear()}
+      <Link to="https://mui.com/">Movies Apps!</Link> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -34,13 +32,26 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Register() {
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const [errorMessage, setError] = React.useState("");
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const email = data.get("email");
+    const password = data.get(`password`);
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      navigate("/");
+    } catch (error) {
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      setError(errorMessage);
+    }
   };
 
   return (
@@ -55,9 +66,7 @@ export default function Register() {
             alignItems: "center",
           }}
         >
-            <Avatar sx={{ m: 1, bgcolor: '#EB1D36' }}>
-              M
-            </Avatar>
+          <Avatar sx={{ m: 1, bgcolor: "#EB1D36" }}>M</Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
@@ -106,9 +115,10 @@ export default function Register() {
             >
               Sign Up
             </Button>
+            <Typography color="red">{errorMessage}</Typography>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link to="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
