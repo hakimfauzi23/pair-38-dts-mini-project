@@ -3,7 +3,13 @@ import { DetailMovie } from "./pages/DetailMovie";
 import { Homepage } from "./pages/Homepage";
 import { Route, Routes } from "react-router-dom";
 
-function App() {
+import { ThemeProvider } from '@mui/material';
+
+import Navbar from './components/Navbar';
+import theme from './themes/theme';
+import Footer from './components/Footer';
+
+const App = () => {
   return (
     <>
       <Routes>
