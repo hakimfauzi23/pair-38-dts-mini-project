@@ -48,15 +48,23 @@ export const MovieSlider = ({ data, title, original }) => {
       <Slider {...settings}>
         {movies.map((e, i) => {
           return (
-            <div key={i}>
+            <div
+              key={i}
+              className={`${original ? "original" : "list"} centered`}
+            >
               <Link to={`/movie/${e.id}`}>
                 <img
-                  className={original ? "original" : "list"}
+                  className={`slider-image ${original ? "original" : "list"}`}
                   src={`${BASE_IMAGE_URL}${
                     original ? e.poster_path : e.backdrop_path
                   }`}
-                  alt="Credit to Cristina Gottardi on Unsplash"
+                  alt={e.title}
                 />
+                {!original ? (
+                  <div>{`${e.title} (${e.release_date?.split("-")[0]})`}</div>
+                ) : (
+                  ""
+                )}
               </Link>
             </div>
           );

@@ -115,6 +115,26 @@ body {
   color: white;
 }
 
+.centered {
+  text-align: center;
+}
+
+.centered a {
+  text-decoration: none;
+  color: white;
+  font-size: small;
+}
+
+.movie-slider .slider-image {
+  transition: transform 0.2s;
+}
+
+.movie-slider .slider-image:hover {
+  -ms-transform: scale(1.15); /* IE 9 */
+  -webkit-transform: scale(1.15); /* Safari 3-8 */
+  transform: scale(1.15);
+}
+
 @media only screen and (max-width: 600px) {
   .movie-information-carousel {
     display: none;

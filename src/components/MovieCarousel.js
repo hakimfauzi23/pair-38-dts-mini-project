@@ -53,7 +53,7 @@ class CustomSlide extends Component {
         return e.id == id;
       });
 
-      return filtered[0].name;
+      return filtered[0]?.name;
     }
 
     movie.genre_ids.forEach((e) => {
