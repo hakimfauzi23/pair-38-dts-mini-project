@@ -14,7 +14,7 @@ const Footer = () => {
 
                 <Grid container spacing={4} sx={{ mb: 4, textAlign: 'left' }}>
                     <Grid item xs={6} md={3}>
-                        <Stack spacing={2}>
+                        <Stack spacing={'15px'}>
                             <Typography variant="caption" component="a" href="#">
                                 Audio and Subtitles
                             </Typography>
@@ -33,26 +33,30 @@ const Footer = () => {
                             size="small"
                             defaultValue="DEFAULT"
                             sx={{ 
-                                borderWidth: '2px',
+                                borderWidth: '1px',
                                 borderStyle: 'solid',
-                                borderColor: 'common.white',
-                                color: 'common.white',
-                                '& .MuiSelect-icon': {
-                                    color: 'common.white'
-                                },
-                                '& .MuiOutlinedInput-notchedOutline': {
-                                    border: 'none'
-                                }
+                                borderColor: '#808080',
+                                color: '#808080',
+                                width: '113px',
+                                height: '36px',
+                                fontFamily: 'Inter',
+                                fontStyle: 'normal',
+                                fontWeight: 400,
+                                fontSize: '13px',
+                                lineHeight: '16px',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'flex-start'
                             }}
                     >
-                        <MenuItem value="DEFAULT">Service Provider</MenuItem>
+                        <MenuItem value="DEFAULT">Service Code</MenuItem>
                         <MenuItem value="ID">Bahasa Indonesia</MenuItem>
                         <MenuItem value="EN">English</MenuItem>
                     </Select>
                         </Stack>
                     </Grid>
                     <Grid item xs={6} md={3}>
-                    <Stack spacing={2}>
+                    <Stack spacing={'15px'}>
                             <Typography variant="caption" component="a" href="#">
                                 Audio Description
                             </Typography>
@@ -65,7 +69,7 @@ const Footer = () => {
                         </Stack>
                     </Grid>
                     <Grid item xs={6} md={3}>
-                    <Stack spacing={2}>
+                    <Stack spacing={'15px'}>
                             <Typography variant="caption" component="a" href="#">
                                 Help center
                             </Typography>
@@ -78,7 +82,7 @@ const Footer = () => {
                         </Stack>
                     </Grid>
                     <Grid item xs={6} md={3}>
-                    <Stack spacing={2}>
+                    <Stack spacing={'15px'}>
                             <Typography variant="caption" component="a" href="#">
                                 Gift Cards
                             </Typography>
@@ -93,7 +97,7 @@ const Footer = () => {
                 </Grid>
              
 
-                <Typography variant="caption" sx={{  float: 'left' }}> 
+                <Typography variant="caption2" sx={{  float: 'left' }}> 
                 © 2022 Movies, All Right Reserved
                 </Typography>
             </Container>
