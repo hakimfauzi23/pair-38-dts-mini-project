@@ -4,7 +4,7 @@ const MovieDetail = ({ data }) => {
   const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/original";
   return (
     <div>
-      <div className="detail-movie-poster">
+      <div className="detail-movie-poster" style={{marginTop:"5%"}}>
         <div className="detail-movie-poster-contain">
           <h1>{`${data.title} (${data.release_date?.split("-")[0]})`}</h1>
           <div className="truncate">
