@@ -1,9 +1,7 @@
-import React from 'react';
-import './App.css';
-import '@fontsource/inter/300.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/700.css';
+import "./App.css";
+import { DetailMovie } from "./pages/DetailMovie";
+import { Homepage } from "./pages/Homepage";
+import { Route, Routes } from "react-router-dom";
 
 import { ThemeProvider } from '@mui/material';
 
@@ -15,16 +13,12 @@ import Home from './pages';
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Navbar></Navbar>
-        <Routes>
-          <Route path="/" exact element={<Home/>} />
-          <Route path="/home" exact element={<Home/>} />
-        </Routes>
-        <Footer></Footer>
-      </Router>
-    </ThemeProvider>
+    <>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/movie/:id" element={<DetailMovie />} />
+      </Routes>
+    </>
   );
 }
 
