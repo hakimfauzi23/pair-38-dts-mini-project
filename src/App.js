@@ -8,6 +8,8 @@ import { ThemeProvider } from '@mui/material';
 import Navbar from './components/Navbar';
 import theme from './themes/theme';
 import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages';
 
 const App = () => {
   return (
