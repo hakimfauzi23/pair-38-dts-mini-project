@@ -5,15 +5,24 @@ import MovieSlider from "../components/MovieSlider";
 import tmdb from "../apis/tmdb";
 
 export const Homepage = () => {
-  const [movies, setMovies] = useState([]);
+  const [trending, setTrending] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [topRated, setTopRated] = useState([]);
+  const [series, setSeries] = useState([]);
 
-  console.log(movies);
+  console.log(trending);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const fetchedMovies = await tmdb.get("trending/movie/week");
-        setMovies(fetchedMovies.data.results);
+        const fetchedTrending = await tmdb.get("trending/all/week");
+        const fetchedPopular = await tmdb.get("movie/popular");
+        const fetchedTopRated = await tmdb.get("movie/top_rated");
+        const fetchedSeries = await tmdb.get("trending/tv/week");
+        setPopular(fetchedPopular.data.results);
+        setTrending(fetchedTrending.data.results);
+        setTopRated(fetchedTopRated.data.results);
+        setSeries(fetchedSeries.data.results);
       } catch (error) {
         console.log(error);
       }
@@ -24,9 +33,11 @@ export const Homepage = () => {
 
   return (
     <div>
-      <MovieCarousel data={movies} />
-      <MovieSlider title={"Popular Movies"} data={movies} />
-      <MovieSlider title={"Popular Movies"} data={movies} />
+      <MovieCarousel data={popular} />
+      <MovieSlider title={"Trending This Week"} data={trending} />
+      <MovieSlider title={"Popular Movies"} data={popular} />
+      <MovieSlider title={"Top Rated Movies"} data={topRated} />
+      <MovieSlider title={"Trending Series"} data={series} original={true} />
     </div>
   );
 };

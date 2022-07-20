@@ -58,10 +58,12 @@ export const MovieSlider = ({ data, title, original }) => {
                   src={`${BASE_IMAGE_URL}${
                     original ? e.poster_path : e.backdrop_path
                   }`}
-                  alt={e.title}
+                  alt={e.title ? e.title : e.name}
                 />
                 {!original ? (
-                  <div>{`${e.title} (${e.release_date?.split("-")[0]})`}</div>
+                  <div>{`${e.title ? e.title : e.name} ${
+                    e.release_date ? `(${e.release_date?.split("-")[0]})` : ""
+                  }`}</div>
                 ) : (
                   ""
                 )}
