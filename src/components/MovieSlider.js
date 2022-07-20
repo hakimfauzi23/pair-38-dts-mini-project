@@ -52,7 +52,7 @@ export const MovieSlider = ({ data, title, original }) => {
               key={i}
               className={`${original ? "original" : "list"} centered`}
             >
-              <Link to={`/movie/${e.id}`}>
+              <Link to={`/${e.first_air_date ? "tv" : "movie"}/${e.id}`}>
                 <img
                   className={`slider-image ${original ? "original" : "list"}`}
                   src={`${BASE_IMAGE_URL}${

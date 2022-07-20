@@ -12,10 +12,13 @@ export const DetailMovie = () => {
   const [movie, setMovie] = useState([]);
 
   const idMovie = params?.id;
+
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const fetchedMovie = await tmdb.get(`movie/${idMovie}`);
+        const fetchedMovie = await tmdb.get(
+          `${movie.number_of_season ? "tv" : "movie"}/${idMovie}`
+        );
         setMovie(fetchedMovie.data);
       } catch (error) {
         console.log(error);

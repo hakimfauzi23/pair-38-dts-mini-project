@@ -11,7 +11,7 @@ import theme from "./themes/theme";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
+import { DetailTv } from "./pages/DetailTv";
 const App = () => {
   return (
     <>
@@ -19,6 +19,46 @@ const App = () => {
         <Routes>
           <Route
             path="/"
+            element={
+              <>
+                <Navbar />
+                <Homepage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/movies"
+            element={
+              <>
+                <Navbar />
+                <Homepage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/series"
+            element={
+              <>
+                <Navbar />
+                <Homepage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/newandpopular"
+            element={
+              <>
+                <Navbar />
+                <Homepage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/mylist"
             element={
               <>
                 <Navbar />
@@ -49,6 +89,16 @@ const App = () => {
               <ProtectedRoute>
                 <Navbar />
                 <DetailMovie />
+                <Footer />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/tv/:id"
+            element={
+              <ProtectedRoute>
+                <Navbar />
+                <DetailTv />
                 <Footer />
               </ProtectedRoute>
             }

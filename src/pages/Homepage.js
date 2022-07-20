@@ -10,7 +10,6 @@ export const Homepage = () => {
   const [topRated, setTopRated] = useState([]);
   const [series, setSeries] = useState([]);
 
-  console.log(trending);
 
   useEffect(() => {
     const fetchMovies = async () => {

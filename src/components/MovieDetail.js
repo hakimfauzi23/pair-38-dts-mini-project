@@ -6,7 +6,7 @@ const MovieDetail = ({ data }) => {
     <div>
       <div className="detail-movie-poster">
         <div className="detail-movie-poster-contain">
-          <h1>{`${data.title} (${data.release_date?.split("-")[0]})`}</h1>
+          <h1>{`${data.title ? data.title : data.name} (${(data.release_date ? data.release_date?.split("-")[0] : "Season "+data.number_of_seasons)})`}</h1>
           <div className="truncate">
             <p>{data.overview}</p>
           </div>
