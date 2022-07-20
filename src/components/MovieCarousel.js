@@ -162,7 +162,7 @@ export const MovieCarousel = ({ data }) => {
   const movies = data;
 
   return (
-    <div style={{ marginTop: "3%", marginBottom: "1%" }}>
+    <div style={{marginBottom: "1%" }}>
       <Slider {...settings}>
         {movies.map((e, i) => {
           return <CustomSlide key={i} index={i} data={e} genres={genres} />;
